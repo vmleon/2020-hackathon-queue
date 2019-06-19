@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "GraphQL server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "mocha"
+  },
+  "author": "Victor Martin",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.6.3",
+    "dotenv": "^8.0.0",
+    "faker": "^4.1.0",
+    "graphql": "^14.3.1",
+    "oracledb": "^3.1.2",
+    "uuid": "^3.3.2"
+  }
+}
