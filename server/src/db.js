@@ -20,8 +20,7 @@ class Database {
         try {
             let result = await connection.execute(`
                 SELECT 1
-                FROM SSB.customer
-                WHERE ROWNUM <= 1
+                FROM DUAL
             `)
             return true;
         } catch (error) {
