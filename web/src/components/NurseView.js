@@ -64,7 +64,7 @@ function NurseView({ history }) {
         variant="contained"
         color="secondary"
         className={classes.button}
-        onClick={() => history.push("/nurse/patient")}
+        onClick={() => history.push("/nursepatient/")}
       >
         <AddIcon /> Register a new patient
       </Button>

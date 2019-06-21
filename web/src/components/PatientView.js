@@ -36,8 +36,8 @@ const useStylesPatientView = makeStyles(theme => ({
 }));
 
 const patientPriority = {
-  queuePosition: 1,
-  estimatedTime: 5
+  queuePosition: 3,
+  estimatedTime: 90
 };
 
 function PatientView({ history }) {

@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { deepOrange } from "@material-ui/core/colors";
 
-const useStylesDoctorPatientView = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
@@ -34,7 +34,7 @@ const useStylesDoctorPatientView = makeStyles(theme => ({
 }));
 
 function DoctorPatientView({ history }) {
-  const classes = useStylesDoctorPatientView();
+  const classes = useStyles();
   return (
     <div className={classes.container}>
       <h2>Victor Martin</h2>

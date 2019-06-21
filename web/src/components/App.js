@@ -13,6 +13,7 @@ import NurseView from "./NurseView";
 import DoctorView from "./DoctorView";
 import PatientView from "./PatientView";
 import DoctorPatientView from "./DoctorPatientView";
+import NursePatientView from "./NursePatientView";
 import "./App.css";
 
 const useStyles = makeStyles(theme => ({
@@ -71,6 +72,7 @@ function App() {
         <Route path="/nurse/" component={NurseView} />
         <Route path="/doctor/" component={DoctorView} />
         <Route path="/doctorpatient/" component={DoctorPatientView} />
+        <Route path="/nursepatient/" component={NursePatientView} />
       </>
     </Router>
   );
