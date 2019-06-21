@@ -7,7 +7,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStylesNurseView = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
@@ -43,10 +43,10 @@ const useStylesNurseView = makeStyles(theme => ({
 }));
 
 function NurseView({ history }) {
-  const classes = useStylesNurseView();
+  const classes = useStyles();
   return (
     <div className={classes.container}>
-      <h2>Hi Doris Freedman</h2>
+      <h2>Hi Doris</h2>
       <Paper className={classes.root}>
         <InputBase
           className={classes.input}

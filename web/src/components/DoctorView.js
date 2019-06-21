@@ -53,7 +53,7 @@ function DoctorView({ history }) {
               </TableCell>
               <TableCell>{row.pps}</TableCell>
               <TableCell align="right">
-                <Button onClick={() => history.push("/doctor/patient")}>
+                <Button onClick={() => history.push("/doctorpatient/")}>
                   View
                 </Button>
               </TableCell>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,6 +15,10 @@ const useStylesLoginStaff = makeStyles(theme => ({
     marginRight: theme.spacing(1),
     marginBottom: theme.spacing(1),
     width: 200
+  },
+  link: {
+    margin: theme.spacing(2),
+    textDecoration: "none"
   }
 }));
 
@@ -47,6 +52,9 @@ function LoginStaff({ history }) {
           Log in
         </Button>
       </form>
+      <Link className={classes.link} to="/">
+        Are you a patient?
+      </Link>
     </div>
   );
 }

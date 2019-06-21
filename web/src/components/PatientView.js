@@ -2,17 +2,18 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
-import { deepOrange, deepPurple } from "@material-ui/core/colors";
-import { styled } from "@material-ui/core/styles";
+import { orange, red, purple } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
+import moment from "moment";
 
-const Position = styled(Avatar)({
-  backgroundColor: deepOrange[500],
-  margin: 10,
-  width: 200,
-  height: 200,
-  color: "#fff"
-});
+const positionMap = {
+  1: { end: "st", color: red[500] },
+  2: { end: "nd", color: orange[500] },
+  3: { end: "rd", color: purple[500] }
+};
+
+const posColor = pos => (positionMap[pos] && positionMap[pos].color) || null;
+const posEnd = pos => (positionMap[pos] && positionMap[pos].end) || "th";
 
 const useStylesPatientView = makeStyles(theme => ({
   container: {
@@ -20,26 +21,44 @@ const useStylesPatientView = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center"
   },
+  positionAvatar: ({ position }) => {
+    return {
+      backgroundColor: posColor(position),
+      margin: 10,
+      width: 200,
+      height: 200,
+      color: "#fff"
+    };
+  },
   text: {
     padding: theme.spacing(3, 2)
   }
 }));
 
+const patientPriority = {
+  queuePosition: 1,
+  estimatedTime: 5
+};
+
 function PatientView({ history }) {
-  const patientPriority = {
-    queuePosition: 3,
-    estimatedTime: 92
-  };
-  const classes = useStylesPatientView();
+  const pos = patientPriority.queuePosition;
+  const estimatedTimeInMinutes = patientPriority.estimatedTime;
+  const firstName = "John";
+  const classes = useStylesPatientView({
+    position: pos
+  });
   return (
     <div className={classes.container}>
-      <h2>Victor, your position is</h2>
-      <Position sizes="huge">
+      <h2>{firstName}, your position is</h2>
+      <Avatar className={classes.positionAvatar} sizes="huge">
         <Typography variant="h3" component="h1">
-          3rd
+          {`${pos}${posEnd(pos)}`}
         </Typography>
-      </Position>
-      <p className={classes.text}>Estimated time: 1h 32m</p>
+      </Avatar>
+      <p className={classes.text}>
+        Estimated time:{" "}
+        {moment.duration(estimatedTimeInMinutes, "minutes").humanize()}
+      </p>
       <Button
         variant="contained"
         color="primary"
