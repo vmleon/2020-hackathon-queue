@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -25,9 +25,6 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
-  },
-  titleText: {
-    textDecoration: "none"
   }
 }));
 
@@ -43,13 +40,12 @@ const MenuAppBar = ({ history }) => {
           className={classes.menuButton}
           color="inherit"
           aria-label="Menu"
+          onClick={() => history.push("/")}
         >
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" className={classes.title}>
-          <Link to="/" className={classes.titleText}>
-            IHAQS
-          </Link>
+          IHAQS
         </Typography>
         {auth && (
           <Button color="inherit" onClick={() => history.goBack()}>

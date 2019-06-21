@@ -41,7 +41,6 @@ function LoginPatient({ history }) {
           id="dob"
           label="Date of Birdth"
           type="date"
-          defaultValue="1980-01-01"
           className={classes.textField}
           InputLabelProps={{
             shrink: true

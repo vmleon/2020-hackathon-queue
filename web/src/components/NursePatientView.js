@@ -1,12 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
 import TextField from "@material-ui/core/TextField";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
+import SymptomsInput from "./SymptomInput";
+import PriorityInput from "./PriorityInput";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -22,49 +19,26 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    width: "100%"
+    marginBottom: theme.spacing(1)
   }
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
-    }
-  }
-};
-
-const symptoms = [
-  "Runny or stuffy nose",
-  "Sore throat",
-  "Cough",
-  "Congestion",
-  "Headache",
-  "Sneezing",
-  "Fever"
-];
-
-function getStyles(name, symptomName) {
-  return {
-    fontWeight: symptomName.indexOf(name) === -1 ? 1 : 5
-  };
-}
-
 function NursePatientView({ history }) {
   const classes = useStyles();
-  const [symptomName, setSymptomName] = React.useState([]);
+  const [symptomNames, setSymptomNames] = React.useState([]);
+  const [priority, setPriority] = React.useState("");
 
-  function handleChange(event) {
-    setSymptomName(event.target.value);
+  function handleChangeSymptoms(event) {
+    setSymptomNames(event.target.value);
+  }
+
+  function handleChangePriority(event) {
+    setPriority(event.target.value);
   }
 
   return (
     <div className={classes.container}>
-      <h2>Register a new patient</h2>
+      <h2>New patient</h2>
       <div className={classes.details}>
         <TextField
           id="firstName"
@@ -95,32 +69,13 @@ function NursePatientView({ history }) {
           id="dob"
           label="Date of Birdth"
           type="date"
-          defaultValue="1980-01-01"
           className={classes.textField}
           InputLabelProps={{
             shrink: true
           }}
         />
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="select-multiple-checkbox">Symptoms</InputLabel>
-          <Select
-            multiple
-            value={symptomName}
-            onChange={handleChange}
-            input={<Input id="select-multiple" />}
-            MenuProps={MenuProps}
-          >
-            {symptoms.map(name => (
-              <MenuItem
-                key={name}
-                value={name}
-                style={getStyles(name, symptomName)}
-              >
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        <SymptomsInput onChange={handleChangeSymptoms} value={symptomNames} />
+        <PriorityInput onChange={handleChangePriority} value={priority} />
         <TextField
           id="description"
           label="Description"
